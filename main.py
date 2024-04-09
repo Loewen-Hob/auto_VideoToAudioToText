@@ -9,7 +9,7 @@ def process_video(input_video_path, output_audio_path, srt_path, config):
     print("Audio extraction success.")
 
     print("Text extraction begins.")
-    whisper_tool.do_whisper(output_audio_path, srt_path, config['from'], config['hf_model_path'], config['device'])
+
     print("Text extraction success.")
 
     # 可以根据需要启用翻译部分
