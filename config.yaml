@@ -1,0 +1,8 @@
+input_folder: /root/bishe/end_output/不符合规定_101/segment_video_0.7
+output_folder: /root/bishe/end_output/不符合规定_101/mp3
+srt_folder: /root/bishe/end_output/不符合规定_101/ASR
+from: zh
+to: zh
+translate_threads: 10
+hf_model_path: "/root/bishe/video2text/auto_ai_subtitle/model/whisper-large-v3/pytorch_model.bin"
+device: cuda
