@@ -1,0 +1,4 @@
+tqdm
+translate
+pyyaml
+ffmpeg-python

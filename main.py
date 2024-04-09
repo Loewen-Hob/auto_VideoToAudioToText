@@ -3,17 +3,15 @@ import yaml
 from tqdm import tqdm
 from script import audio_tool, text_bd_tool, translate_tool
 
-def process_video(input_video_path, output_audio_path, srt_path, config):
-    print("Audio extraction begins.")
+def process_video(input_video_path, output_audio_path, srt_path):
+
     audio_tool.audio_extract(input_video_path, output_audio_path)
     print("Audio extraction success.")
 
-    print("Text extraction begins.")
-
+    text_bd_tool.audio_to_text(output_audio_path, srt_path)
     print("Text extraction success.")
 
     # 可以根据需要启用翻译部分
-    # print("Translation begins.")
     # translate_tool.do_translate(srt_path, srt_translate_path, config['from'], config['to'], config['translate_threads'])
     # print("Translation success.")
 
@@ -47,11 +45,11 @@ if __name__ == '__main__':
                     output_audio_dir = os.path.join(mp3_folder_path, subdir)
                     srt_output_dir = os.path.join(srt_folder_path, subdir)
 
-                    output_audio_path = os.path.join(output_audio_dir, base_filename + '.mp3')
+                    output_audio_path = os.path.join(output_audio_dir, base_filename + '.wav')
                     srt_path = os.path.join(srt_output_dir, base_filename + '.srt')
 
                     if ensure_dir(output_audio_path) and ensure_dir(srt_path):
-                        process_video(input_video_path, output_audio_path, srt_path, config)
+                        process_video(input_video_path, output_audio_path, srt_path)
 
                     else:
                         print(f"Skipping {input_video_path} because output directory exists.")
