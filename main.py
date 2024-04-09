@@ -17,12 +17,17 @@ def process_video(input_video_path, output_audio_path, srt_path):
 
     print(f"Processing {input_video_path} success.")
 
+
 def ensure_dir(file_path):
     directory = os.path.dirname(file_path)
+
+    if os.path.isfile(file_path):
+        return False
+
     if not os.path.exists(directory):
         os.makedirs(directory)
-        return True
-    return False
+
+    return True
 
 if __name__ == '__main__':
     with open('config.yaml', encoding='utf-8') as f:
@@ -49,6 +54,7 @@ if __name__ == '__main__':
                     srt_path = os.path.join(srt_output_dir, base_filename + '.srt')
 
                     if ensure_dir(output_audio_path) and ensure_dir(srt_path):
+                        print(f"Processing {input_video_path}...")
                         process_video(input_video_path, output_audio_path, srt_path)
 
                     else:
